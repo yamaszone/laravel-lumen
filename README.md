@@ -22,11 +22,11 @@ $ chmod +x /opt/bin/docker-compose
 Use the following convenient script to do frequent operation around Lumen app.
 
 ```sh
-$ ./run help
+$ ./lumen help
 Usage:
-         a, app         : Launch Lumen app.
+         down           : Stop Lumen app.
          e, enter       : Enter Lumen container.
          example        : Send an example request to sample Lumen app.
-         t, tests       : Run tests.
          h, help        : Show this help.
-```
+         t, tests       : Run BATS tests for Lumen app.
+         up             : Launch Lumen app.```
