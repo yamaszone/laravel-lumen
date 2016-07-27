@@ -2,11 +2,12 @@
 
 help(){
 	echo "Usage:"
-	printf "\t a, app\t\t: Launch Lumen app.\n"
+	printf "\t down\t\t: Stop Lumen app.\n"
 	printf "\t e, enter\t: Enter Lumen container.\n"
 	printf "\t example\t: Send an example request to sample Lumen app.\n"
-	printf "\t t, tests\t: Run tests.\n"
 	printf "\t h, help\t: Show this help.\n"
+	printf "\t t, tests\t: Run BATS tests for Lumen app.\n"
+	printf "\t up\t\t: Launch Lumen app.\n"
 	exit 0
 }
 
@@ -16,13 +17,20 @@ if [[ -z $1 ]];then
 fi
 
 case $1 in
-	a | app)
+	up)
 		docker-compose up -d
+		;;
+	down)
+		docker-compose down
 		;;
 	e | enter)
 		docker-compose exec lumen /bin/bash -c "cd /var/www/default && /bin/bash"
 		;;
 	example)
+		if [[ -z $DOCKER_HOST_IP ]]; then
+			echo "Run 'export DOCKER_HOST_IP=<Docker Host IP address>' and retry"
+			exit 1
+		fi
 		# See: http://nordicapis.com/build-api-lumen-micro-framework/
 		curl http://${DOCKER_HOST_IP}:8000/encode?value=encodeexampletext; echo
 		;;

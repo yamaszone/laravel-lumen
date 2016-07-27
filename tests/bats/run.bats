@@ -3,7 +3,7 @@
 load test_helper
 
 @test "'run' script displays help." {
-	run ./run
+	run ./lumen
 	assert_contains "$output" "Usage:"
 }
 
