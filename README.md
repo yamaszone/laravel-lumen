@@ -29,4 +29,5 @@ Usage:
          example        : Send an example request to sample Lumen app.
          h, help        : Show this help.
          t, tests       : Run BATS tests for Lumen app.
-         up             : Launch Lumen app.```
+         up             : Launch Lumen app.
+```
