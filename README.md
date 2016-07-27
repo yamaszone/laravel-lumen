@@ -1,39 +1,32 @@
-# PHP Dockerized
+# PHP Laravel Lumen Micro Framework
 
-> Dockerized PHP development stack: Nginx, MySQL, MongoDB, PHP-FPM, HHVM, Memcached, Redis, Elasticsearch and RabbitMQ
-
-[![Build Status](https://travis-ci.org/kasperisager/php-dockerized.svg)](https://travis-ci.org/kasperisager/php-dockerized)
-
-PHP Dockerized gives you everything you need for developing PHP applications locally. The idea came from the need of having an OS-agnostic and virtualized alternative to the great [MNPP](https://github.com/jyr/MNPP) stack as regular LAMP stacks quite simply can't keep up with the Nginx + PHP-FPM/HHVM combo in terms of performance. I hope you'll find it as useful an addition to your dev-arsenal as I've found it!
-
-## What's inside
-
-* [Nginx](http://nginx.org/)
-* [MySQL](http://www.mysql.com/)
-* [MongoDB](http://www.mongodb.org/)
-* [PHP-FPM](http://php-fpm.org/)
-* [HHVM](http://www.hhvm.com/)
-* [Memcached](http://memcached.org/)
-* [Redis](http://redis.io/)
-* [Elasticsearch](http://www.elasticsearch.org/)
-* [RabbitMQ](https://www.rabbitmq.com/)
+Minimal Lumen with: Nginx and MySQL
 
 ## Requirements
 
 * [Docker Engine](https://docs.docker.com/installation/)
 * [Docker Compose](https://docs.docker.com/compose/)
-* [Docker Machine](https://docs.docker.com/machine/) (Mac and Windows only)
 
 ## Running
 
-Set up a Docker Machine and then run:
+Use the following convenient script to do frequent operation around Lumen app.
 
 ```sh
-$ docker-compose up
+$ ./run help
+Usage:
+         a, app         : Launch Lumen app.
+         e, enter       : Enter Lumen container.
+         example        : Send an example request to sample Lumen app.
+         t, tests       : Run tests.
+         h, help        : Show this help.
 ```
 
-That's it! You can now access your configured sites via the IP address of the Docker Machine or locally if you're running a Linux flavour and using Docker natively.
+## Prerequisite: Install docker-compose on CoreOS
 
-## License
+Use the following convenient script to do frequent operation around Lumen app.
 
-Copyright &copy; 2014-2016 [Kasper Kronborg Isager](http://github.com/kasperisager). Licensed under the terms of the [MIT license](LICENSE.md).
+```sh
+$ sudo su -
+$ curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /opt/bin/docker-compose
+$ chmod +x /opt/bin/docker-compose
+```
