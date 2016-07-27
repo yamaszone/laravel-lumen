@@ -53,6 +53,18 @@ COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
 ################################################################################
+# Install Lumen Framework
+################################################################################
+RUN apt-get update && apt-get install -y git \
+	ack-grep \
+	vim \
+	&& apt-get clean all
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer global require "laravel/lumen-installer"
+ENV PATH ~/.composer/vendor/bin:$PATH
+
+################################################################################
 # Volumes
 ################################################################################
 

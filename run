@@ -1,0 +1,35 @@
+#!/bin/bash
+
+help(){
+	echo "Usage:"
+	printf "\t a, app\t\t: Launch Lumen app.\n"
+	printf "\t e, enter\t: Enter Lumen container.\n"
+	printf "\t example\t: Send an example request to sample Lumen app.\n"
+	printf "\t t, tests\t: Run tests.\n"
+	printf "\t h, help\t: Show this help.\n"
+	exit 0
+}
+
+if [[ -z $1 ]];then
+	help
+	exit 0
+fi
+
+case $1 in
+	a | app)
+		docker-compose up -d
+		;;
+	e | enter)
+		docker-compose exec lumen /bin/bash -c "cd /var/www/default && /bin/bash"
+		;;
+	example)
+		# See: http://nordicapis.com/build-api-lumen-micro-framework/
+		curl http://${DOCKER_HOST_IP}:8000/encode?value=encodeexampletext; echo
+		;;
+	t | tests)
+		vendor/bats/bin/bats tests/bats/
+		;;
+	* | h | help)
+		help
+		;;
+esac
