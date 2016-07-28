@@ -1,6 +1,6 @@
 # PHP Laravel Lumen Micro Framework
 
-Minimal Lumen with: Nginx and MySQL
+Minimal Lumen with: Nginx and PostgreSQL
 
 ## Requirements
 
