@@ -5,15 +5,16 @@ lumen:
     - "443:443"
     - "9000:9000"
   links:
-    - mysql:mysql
+    - postgres:postgres
   volumes:
     - ./www:/var/www
     - ./sites:/etc/nginx/conf.d
     - ./logs:/var/log/supervisor
 
-mysql:
-  image: mysql
+postgres:
+  image: postgres:9.5
   ports:
-    - "3306:3306"
+    - "5433:5432"
   environment:
-    MYSQL_ROOT_PASSWORD: password
+    POSTGRES_PASSWORD: password
+
