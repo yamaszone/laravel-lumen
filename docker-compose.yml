@@ -1,4 +1,5 @@
 lumen:
+  image: yamaszone/nginx-laravel-lumen:v0.1.0
   build: .
   ports:
     - "8000:80"
